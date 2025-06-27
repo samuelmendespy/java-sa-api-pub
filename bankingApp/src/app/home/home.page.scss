@@ -1,0 +1,28 @@
+.card-scroll-container {
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 8px 0;
+  }
+  
+  .card-scroll {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+  }
+  
+  .credit-card {
+    min-width: 200px;
+    flex-shrink: 0;
+    background: #3f51b5;
+    color: white;
+    font-weight: bold;
+    border-radius: 12px;
+  }
+  
+  .card-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
+    font-size: 1.2em;
+  }

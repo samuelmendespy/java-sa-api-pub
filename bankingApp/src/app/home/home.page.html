@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Minha Conta</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>{{ user.fullName }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p><strong>Conta:</strong> {{ user.account.accountNumber }}</p>
+      <p><strong>Agência:</strong> {{ user.account.agency }}</p>
+      <p><strong>Saldo:</strong> {{ getFormattedBalance() }}</p>
+    </ion-card-content>
+  </ion-card>
+
+  <div class="card-scroll-container">
+    <div class="card-scroll">
+      <ion-card *ngFor="let card of user.account.creditCards" class="credit-card">
+        <ion-card-content class="card-content">
+          {{ maskCard(card.number) }}
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </div>
+
+</ion-content>

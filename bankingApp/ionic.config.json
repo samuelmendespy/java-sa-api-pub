@@ -1,0 +1,7 @@
+{
+  "name": "bankingApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
