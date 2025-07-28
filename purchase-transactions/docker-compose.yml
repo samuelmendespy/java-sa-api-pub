@@ -1,0 +1,43 @@
+services:
+  purchase-transactions:
+    build:
+      context: ./purchase-transactions
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - rabbitmq
+    env_file: ".env"
+    restart: on-failure
+  
+  account-manager:
+    build:
+      context: ./account-manager
+      dockerfile: Dockerfile
+    ports:
+      - "8081:8080"
+    depends_on:
+      - postgresql
+      - rabbitmq
+    env_file: ".env"
+    restart: on-failure
+    
+  postgresql:
+    image: postgres:14-alpine
+    ports:
+      - "5432:5432"
+    env_file: ".env"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    env_file: ".env"
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
